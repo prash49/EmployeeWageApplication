@@ -86,4 +86,24 @@ console.log(fullTimeWageFirstOccurance);
 // UC 7E Checking UC7C result Array Full time Wage Array , truly Holds Full timewage
 // Using Every function
 
-console.log("Is fulltimeWageArray truely holds fulltime Wage: "+fullTimeWageArray.every(fullTimeWageDay));
+console.log("Is fulltimeWageArray truely holds fulltime Wage: " + fullTimeWageArray.every(fullTimeWageDay));
+
+
+
+/*
+ UC 7F Check for PartTime Wage in empWageDaily Array and Performing All other opertions too
+ */
+function partTimeWageDay(dailyWage) {
+    return dailyWage.includes("80");
+}
+
+console.log("Checking for parttimeWage(80) in map Array Present or not:\n" + dayAndDailyWageMapArray.some(partTimeWageDay));
+// Storing only partTimeWage days in parttimeWagearray using Filter
+let partTimeWageArray = dayAndDailyWageMapArray.filter(partTimeWageDay);
+console.log("Part timeWage Days:\n" + partTimeWageArray);
+// checking parttimeWageArray truly holds Parttime totalWages
+console.log("Is parttimeWageArray truely holds Parttime Wage: " + partTimeWageArray.every(partTimeWageDay));
+let partTimeWageFirstOccurance = dayAndDailyWageMapArray.find(partTimeWageDay);
+// let partTimeWageFirstOccurance = partTimeWageArry.find(fullTimeWageDay);
+console.log("\nfirst Occurence of Part Time Wage(80) 0n :");
+console.log(partTimeWageFirstOccurance);
