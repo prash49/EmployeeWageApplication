@@ -10,6 +10,7 @@ const MAX_WORKING_HOURS = 160;
 let empDailyWageArray = new Array();
 let totalEmpHrs = 0;
 let totalWorkigDays = 0;
+let empDailyWageMap = new Map();
 
 function getWorkingHrs(employeeCheck) {
     switch (employeeCheck) {
@@ -28,7 +29,9 @@ while (totalEmpHrs < MAX_WORKING_HOURS && totalWorkigDays < MAX_WORKING_DAYS) {
     let employeeCheck = Math.floor(Math.random() * 10) % 3;
     let empHrs = getWorkingHrs(employeeCheck);
     totalEmpHrs += empHrs;
-    empDailyWageArray.push(calculateWage(empHrs));
+    let dailyWage = calculateWage(empHrs)
+    empDailyWageArray.push(dailyWage);
+    empDailyWageMap.set(totalWorkigDays, dailyWage);
 }
 function calculateWage(empHrs) {
     return empHrs * WAGE_PER_HR;
@@ -127,6 +130,14 @@ let partTimeWorkedDays = empDailyWageArray.reduce(totalFullTimeWorked, 0);
 console.log("Employee Worked Part time for " + partTimeWorkedDays + " Days");
 let fullTimeWorkedDays = empDailyWageArray.reduce(totalPartTimesWorked, 0);
 console.log("Employee Worked Full time for " + fullTimeWorkedDays + " Days");
-let totalDaysWorked= fullTimeWorkedDays+partTimeWorkedDays;
-console.log("Employee Total Worked  for " + totalDaysWorked + " Days");
+let totalDaysWorked = fullTimeWorkedDays + partTimeWorkedDays;
+console.log("Employee Total Worked  for " + totalDaysWorked + " Days\n");
 
+/*
+* UC8 storing Day , DailyWage along With Total Wage in a Map
+*/
+
+console.log("Employee Wage Map Contains:" + empDailyWageMap);
+for (let [key, value] of empDailyWageMap) {
+    console.log(key + " = " + value);
+}
