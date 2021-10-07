@@ -82,4 +82,8 @@ let fullTimeWageFirstOccurance = dayAndDailyWageMapArray.find(fullTimeWageDay);
 // let fullTimeWageFirstOccurance = fullTimeWageArry.find(fullTimeWageDay);
 console.log("\nfirst Occurence of Full Time Wage(160) 0n :\n");
 console.log(fullTimeWageFirstOccurance);
- 
+
+// UC 7E Checking UC7C result Array Full time Wage Array , truly Holds Full timewage
+// Using Every function
+
+console.log("Is fulltimeWageArray truely holds fulltime Wage: "+fullTimeWageArray.every(fullTimeWageDay));
