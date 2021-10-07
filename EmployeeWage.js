@@ -28,12 +28,28 @@ while (totalEmpHrs < MAX_WORKING_HOURS && totalWorkigDays < MAX_WORKING_DAYS) {
     let employeeCheck = Math.floor(Math.random() * 10) % 3;
     let empHrs = getWorkingHrs(employeeCheck);
     totalEmpHrs += empHrs;
-    empDailyWageArray.push(calculateWage(empHrs)); 
+    empDailyWageArray.push(calculateWage(empHrs));
 }
 function calculateWage(empHrs) {
-    return empHrs *  WAGE_PER_HR;
+    return empHrs * WAGE_PER_HR;
 }
-let totalEmpWage = totalEmpHrs * WAGE_PER_HR;
-console.log("Daily Employee Wage stored in Array:\n"+empDailyWageArray);
-console.log(" Total Employee Wage is: " + totalEmpWage + " for Total Employee Work Hours: " + totalEmpHrs
-    + " Total Working Days: " + totalWorkigDays);
+let empWage = totalEmpHrs * WAGE_PER_HR;
+console.log("Daily Employee Wage stored in Array:\n" + empDailyWageArray);
+console.log(" Total Employee Wage is: " + empWage + "\n for Total Employee Work Hours: " + totalEmpHrs
+    + "\n Total Working Days: " + totalWorkigDays);
+
+// UC 7A For Each Method
+let totalEmpWage = 0;
+function sum(dailyWage) {
+    totalEmpWage += dailyWage;
+}
+empDailyWageArray.forEach(sum);
+console.log("\nUsing ForEach Loop, Total Wage: " + totalEmpWage);
+
+// UC 7A using Reduce Method
+let totalEmpWages = 0;
+function totalWages(totalEmpWages, dailyWage) {
+    return totalEmpWages + dailyWage;
+}
+let totalEmpWageUsingReduce = empDailyWageArray.reduce(totalWages, 0);
+console.log("\nUsing Reduce Method, Total Wage: " + totalEmpWageUsingReduce);
