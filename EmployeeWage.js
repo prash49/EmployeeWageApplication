@@ -59,7 +59,7 @@ console.log("\nUsing Reduce Method, Total Wage: " + totalEmpWageUsingReduce);
 let counter = 0;
 function dayAndDailyWageMap(dailyWage) {
     counter++;
-    return "Day"+counter + " -> " + dailyWage;
+    return "Day" + counter + " -> " + dailyWage;
 }
 let dayAndDailyWageMapArray = new Array();
 dayAndDailyWageMapArray = empDailyWageArray.map(dayAndDailyWageMap);
@@ -75,3 +75,11 @@ function fullTimeWageDay(dailyWage) {
 let fullTimeWageArray = dayAndDailyWageMapArray.filter(fullTimeWageDay);
 console.log("\nUsing Filter Storing Only FullTimewage into Array\n");
 console.log(fullTimeWageArray);
+
+//UC 7D  Finding first of Full Time Wage in Array using Find function
+
+let fullTimeWageFirstOccurance = dayAndDailyWageMapArray.find(fullTimeWageDay);
+// let fullTimeWageFirstOccurance = fullTimeWageArry.find(fullTimeWageDay);
+console.log("\nfirst Occurence of Full Time Wage(160) 0n :\n");
+console.log(fullTimeWageFirstOccurance);
+ 
