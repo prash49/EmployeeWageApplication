@@ -59,9 +59,19 @@ console.log("\nUsing Reduce Method, Total Wage: " + totalEmpWageUsingReduce);
 let counter = 0;
 function dayAndDailyWageMap(dailyWage) {
     counter++;
-    return counter + " -> " + dailyWage;
+    return "Day"+counter + " -> " + dailyWage;
 }
 let dayAndDailyWageMapArray = new Array();
 dayAndDailyWageMapArray = empDailyWageArray.map(dayAndDailyWageMap);
 console.log("\nUsing Map Printing Day with DailyWage.\n");
 console.log(dayAndDailyWageMapArray);
+
+/* UC 7C Showing/Storing  Only Full Time Wage =160 Earned Days in Array 
+* using Filter function/Method
+*/
+function fullTimeWageDay(dailyWage) {
+    return dailyWage.includes("160");
+}
+let fullTimeWageArray = dayAndDailyWageMapArray.filter(fullTimeWageDay);
+console.log("\nUsing Filter Storing Only FullTimewage into Array\n");
+console.log(fullTimeWageArray);
