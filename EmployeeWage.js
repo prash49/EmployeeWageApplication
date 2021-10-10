@@ -12,6 +12,7 @@ let totalEmpHrs = 0;
 let totalWorkigDays = 0;
 let empDailyWageMap = new Map();
 let empDailyHoursMap = new Map();
+let empDailyHrsAndWageArray = new Array();
 
 function getWorkingHrs(employeeCheck) {
     switch (employeeCheck) {
@@ -24,9 +25,10 @@ function getWorkingHrs(employeeCheck) {
     }
 }
 
-
+let day = 0;
 while (totalEmpHrs < MAX_WORKING_HOURS && totalWorkigDays < MAX_WORKING_DAYS) {
     totalWorkigDays++;
+    day++;
     let employeeCheck = Math.floor(Math.random() * 10) % 3;
     let empHrs = getWorkingHrs(employeeCheck);
     totalEmpHrs += empHrs;
@@ -34,6 +36,13 @@ while (totalEmpHrs < MAX_WORKING_HOURS && totalWorkigDays < MAX_WORKING_DAYS) {
     empDailyWageArray.push(dailyWage);
     empDailyWageMap.set(totalWorkigDays, dailyWage);
     empDailyHoursMap.set(totalWorkigDays, empHrs);
+    //UC10 creating object and passing the values
+    let empWageObject = {
+        dayNumber: day,
+        dailyHrs: empHrs,
+        dailyWage: dailyWage
+    }
+    empDailyHrsAndWageArray.push(empWageObject);
 }
 
 
@@ -210,8 +219,15 @@ empDailyHoursMap.forEach((value, key) => {
 });
 
 console.log("Full Working Days : " + fullTimeWorkingDays);
-console.log("Total Full Time Workig Days: "+fullTimeWorkingDays.length)
+console.log("Total Full Time Workig Days: " + fullTimeWorkingDays.length)
 console.log("Part Working Days : " + partTimeWorkingDays);
-console.log("Total Part Time Workig Days: "+partTimeWorkingDays.length)
+console.log("Total Part Time Workig Days: " + partTimeWorkingDays.length)
 console.log("Non Working Days : " + nonWorkingDays);
-console.log("Total Non Workig Days: "+nonWorkingDays.length)
+console.log("Total Non Workig Days: " + nonWorkingDays.length)
+
+/*
+* UC10 Storing Day,Hours Worked and Wage Earned in object
+* object Create in while loop and storing into Array 
+*/
+console.log("creating, Displaying The Object Stored in Array")
+console.log( empDailyHrsAndWageArray);
