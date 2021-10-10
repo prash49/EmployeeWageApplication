@@ -118,18 +118,21 @@ console.log("Is fulltimeWageArray truely holds fulltime Wage: " + fullTimeWageAr
  UC 7F Check for PartTime Wage in empWageDaily Array and Performing All other opertions too
  */
 
- function partTimeWageDay(dailyWage) {
+function partTimeWageDay(dailyWage) {
     return dailyWage.includes("80");
 }
 
 
 console.log("Checking for parttimeWage(80) in map Array Present or not:\n" + dayAndDailyWageMapArray.some(partTimeWageDay));
+
 // Storing only partTimeWage days in parttimeWagearray using Filter
 let partTimeWageArray = dayAndDailyWageMapArray.filter(partTimeWageDay);
 console.log("Part timeWage Days:\n" + partTimeWageArray);
+
 // checking parttimeWageArray truly holds Parttime totalWages
 console.log("Is parttimeWageArray truely holds Parttime Wage: " + partTimeWageArray.every(partTimeWageDay));
 let partTimeWageFirstOccurance = dayAndDailyWageMapArray.find(partTimeWageDay);
+
 // let partTimeWageFirstOccurance = partTimeWageArry.find(fullTimeWageDay);
 console.log("\nfirst Occurence of Part Time Wage(80) 0n :");
 console.log(partTimeWageFirstOccurance);
@@ -176,14 +179,39 @@ console.log(totalSum);
 * UC9_A calculate totalWage and total hours worked using arraow function 
 */
 
-let findTotal=(totalVal, currentVal) => {
-    return totalVal + currentVal ;
+let findTotal = (totalVal, currentVal) => {
+    return totalVal + currentVal;
 }
 
 console.log("Employee Daily Hours map")
 console.log(empDailyHoursMap);
-console.log(Array.from(empDailyHoursMap.values()).reduce(findTotal,0));
+console.log(Array.from(empDailyHoursMap.values()).reduce(findTotal, 0));
 
 console.log("Employee Daily Wage map")
 console.log(empDailyWageMap);
-console.log(Array.from(empDailyWageMap.values()).reduce(findTotal,0));
+console.log(Array.from(empDailyWageMap.values()).reduce(findTotal, 0));
+
+/* 
+* UC9_B Showing FullWorking days , Part working days and No working Days
+*/
+
+let nonWorkingDays = new Array();
+let partTimeWorkingDays = new Array();
+let fullTimeWorkingDays = new Array();
+
+empDailyHoursMap.forEach((value, key) => {
+    if (value == 8)
+        fullTimeWorkingDays.push(key);
+    else if (value == 4) {
+        partTimeWorkingDays.push(key);
+    }
+    else
+        nonWorkingDays.push(key);
+});
+
+console.log("Full Working Days : " + fullTimeWorkingDays);
+console.log("Total Full Time Workig Days: "+fullTimeWorkingDays.length)
+console.log("Part Working Days : " + partTimeWorkingDays);
+console.log("Total Part Time Workig Days: "+partTimeWorkingDays.length)
+console.log("Non Working Days : " + nonWorkingDays);
+console.log("Total Non Workig Days: "+nonWorkingDays.length)
